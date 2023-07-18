@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GitHub User Profile</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h1>GitHub User Profile</h1>
+  <input type="text" id="username-input" placeholder="Enter GitHub Username">
+  <button onclick="getUserProfile()">Get Profile</button>
+  
+  <div id="profile-container"></div>
+  
+  <script>
+    function getUserProfile() {
+      var username = document.getElementById('username-input').value;
+      var apiUrl = `https://api.github.com/users/${username}`;
+      
+      $.ajax({
+        url: apiUrl,
+        dataType: 'json',
+        success: function(data) {
+          var profileContainer = document.getElementById('profile-container');
+          profileContainer.innerHTML = `
+            <h2>${data.name}</h2>
+            <p>Username: ${data.login}</p>
+            <p>Date Joined: ${data.created_at}</p>
+          `;
+        },
+        error: function() {
+          var profileContainer = document.getElementById('profile-container');
+          profileContainer.innerHTML = 'User not found.';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
