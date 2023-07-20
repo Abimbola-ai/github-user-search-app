@@ -585,21 +585,22 @@ a { color: inherit; }
     }
     .search input {
         width: 18.875rem;
-        /* width: 80%; */
-        border: 1px solid black;
+        
         
     }
 
    #no-result {
         color: #F74646;
         font-family: Space Mono;
-        font-size: 1.5rem;
+        font-size: 1rem;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
         width: 10rem;
         height: 1.375rem;
-        margin: 2.5rem;
+        /* margin: 2.5rem; */
+        margin-right: -10rem;
+        
       
     }
 
