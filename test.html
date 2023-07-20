@@ -1,38 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GitHub User Profile</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <title>Dark/Light Mode Toggle</title>
+  <link rel="stylesheet" href="text.css">
 </head>
 <body>
-  <h1>GitHub User Profile</h1>
-  <input type="text" id="username-input" placeholder="Enter GitHub Username">
-  <button onclick="getUserProfile()">Get Profile</button>
-  
-  <div id="profile-container"></div>
-  
-  <script>
-    function getUserProfile() {
-      var username = document.getElementById('username-input').value;
-      var apiUrl = `https://api.github.com/users/${username}`;
-      
-      $.ajax({
-        url: apiUrl,
-        dataType: 'json',
-        success: function(data) {
-          var profileContainer = document.getElementById('profile-container');
-          profileContainer.innerHTML = `
-            <h2>${data.name}</h2>
-            <p>Username: ${data.login}</p>
-            <p>Date Joined: ${data.created_at}</p>
-          `;
-        },
-        error: function() {
-          var profileContainer = document.getElementById('profile-container');
-          profileContainer.innerHTML = 'User not found.';
-        }
-      });
-    }
-  </script>
+  <h1>Welcome to My Website</h1>
+  <a href="#" id="toggleLink">
+    <img src="assets/icon-location.svg" alt="Toggle Dark/Light Mode" id="toggleIcon">
+    <span id="toggleText">Light Mode</span>
+  </a>
+
+  <div class="content-section" id="section-1">
+    <!-- Your content for section 1 goes here -->
+  </div>
+
+  <div class="content-section" id="section-2">
+    <!-- Your content for section 2 goes here -->
+  </div>
+
+  <script src="test.js"></script>
 </body>
 </html>

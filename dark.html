@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">    
-  <script src="js/app.js"></script>
+  <script src="js/script.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   
 </head>
@@ -19,8 +19,8 @@
     <div class="top-nav">
       <h1>devfinder</h1>
       <div class="top-nav-right">
-        <a onclick="toggleMode()" style="text-decoration: none;" href="light.html"><p>light</p></a>
-        <img src="assets/icon-sun.svg" alt="sun icon">
+        <a id="toggleLink" style="text-decoration: none;" href="#"><p id="toggleText">light</p></a>
+        <img id="toggleIcon" src="assets/icon-sun.svg" alt="sun icon">
       </div>
     </div>
 
@@ -28,15 +28,8 @@
       
       <img src="assets/icon-search.svg" alt="search icon">
       <input id="username" type="search" placeholder="Search GitHub username...">
-      <p id="no-result" class="no-result-desktop" style="display: none;color: #F74646;
-      font-family: Space Mono;
-      font-size: 0.9375rem;
-      font-style: normal;
-      font-weight: 700;
-      line-height: normal;
-      width: 10rem;
-      height: 1.375rem;
-      margin: 2.5rem;">No result</p>
+      <p id="no-result" style="display: none;">No result</p>
+      <!-- style="display: none; -->
     
       <button onclick="getUserProfile(event)">Search</button>
     </div>
@@ -49,7 +42,7 @@
         
         <div class="profile-info">
           <h3 id="full-name">The Octocat</h3>
-          <p id="username" class="username">@octocat</p>
+          <p id="user-name" class="username">@octocat</p>
           <p id="date-joined" class="date-joined">Joined 25th January 2011</p>
         </div>
       </div>

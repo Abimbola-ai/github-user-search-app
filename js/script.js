@@ -46,7 +46,7 @@ function getUserProfile(event){
 
 function showUserProfile(user) {
     const fullNameDiv = document.getElementById('full-name');
-    const usernameDiv = document.getElementById('username');
+    const usernameDiv = document.getElementById('user-name');
     const dateJoinedDiv = document.getElementById('date-joined');
     const bioDiv = document.getElementById('bio');
     const avatarDiv = document.getElementById('avatar');
@@ -59,7 +59,7 @@ function showUserProfile(user) {
     const twitterDiv = document.getElementById('twitter');
     
     fullNameDiv.textContent = user.name || 'not available';
-    usernameDiv.textContent = `${user.login}`;
+    usernameDiv.textContent = `@${user.login}`;
     // dateJoinedDiv.textContent = `${user.created_at}`;
 
     // Format the "Date Joined"
@@ -75,8 +75,12 @@ function showUserProfile(user) {
     const avatarImage = document.createElement('img');
     avatarImage.src = user.avatar_url;
     avatarImage.alt = 'Avatar';
-    avatarImage.style.width = '70px'; // Set the desired width
-    avatarImage.style.height = '70px'; // Set the desired height
+    const computedStyles = getComputedStyle(document.querySelector('.profile img'));
+    const width = computedStyles.getPropertyValue('width').trim();
+    const height = computedStyles.getPropertyValue('height').trim();
+    avatarImage.style.width = width;
+    avatarImage.style.height = height;
+  
     
     avatarDiv.innerHTML = '';
     avatarDiv.appendChild(avatarImage);
@@ -113,5 +117,72 @@ function getOrdinalSuffix(number) {
     const noResultDiv = document.getElementById('no-result');
     noResultDiv.style.display = 'none';
   }
-  
+
+
+//Script for darkmode toggle
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleLink = document.getElementById("toggleLink");
+  const toggleIcon = document.getElementById("toggleIcon");
+  const toggleText = document.getElementById("toggleText");
+  const contentSections = document.querySelectorAll(".search");
+  const otherDiv = document.querySelectorAll(".octocat-profile");
+  const statsDiv = document.querySelectorAll(".stats");
+
+  // Function to toggle dark and light mode classes for content sections
+  function toggleContentSectionMode() {
+    contentSections.forEach((section) => {
+      section.classList.toggle("dark-mode");
+      section.classList.toggle("light-mode");
+    });
+  }
+
+   // Function to toggle dark and light mode classes for content sections
+   function toggleOtherDivMode() {
+    otherDiv.forEach((section) => {
+      section.classList.toggle("dark-mode");
+      section.classList.toggle("light-mode");
+    });
+  }
+
+  // Function to toggle dark and light mode classes for content sections
+  function togglestatsDivMode() {
+    statsDiv.forEach((section) => {
+      section.classList.toggle("dark-mode");
+      section.classList.toggle("light-mode");
+    });
+  }
+
+
+
+  // Function to toggle the toggle icon and text based on the current mode
+  function updateToggleIconAndText() {
+    const isDarkMode = document.body.classList.contains("dark-mode");
+    if (isDarkMode) {
+      toggleIcon.src = "assets/icon-moon.svg";
+      toggleText.textContent = "dark";
+    } else {
+      toggleIcon.src = "assets/icon-sun.svg";
+      toggleText.textContent = "light";
+    }
+  }
+
+  // Add event listener to the toggle link (image) to toggle mode for content sections
+  toggleLink.addEventListener("click", function () {
+    document.body.classList.toggle("dark-mode");
+    document.body.classList.toggle("light-mode");
+    toggleContentSectionMode();
+    toggleOtherDivMode();
+    togglestatsDivMode()
+    updateToggleIconAndText();
+  });
+
+  // Toggle mode for content sections and update the toggle icon and text when the page loads
+  toggleContentSectionMode();
+  toggleOtherDivMode()
+  togglestatsDivMode()
+  updateToggleIconAndText();
+});
+
+
+
    
