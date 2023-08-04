@@ -176,6 +176,8 @@ body.light-mode #toggleText {
     font-style: normal;
     font-weight: 400;
     line-height: 1.5625rem;
+    appearance: none;
+    -webkit-appearance: none;
     
 }
 .red-placeholder::placeholder {
