@@ -1,23 +1,40 @@
-
-:root {
+/* styles.css */
+/* :root {
     --lm-icon-bg: brightness(100%);
     --dark-bg: #141D2F;
     --dark-bg-sub:#1E2A47; 
     --light-bg: #F6F8FF;
     --light-bg-sub:#FEFEFE;
+} */
+
+:root {
+    --dark-bg: #141D2F;
+    --dark-bg-sub: #1E2A47;
+    --light-bg: #F6F8FF;
+    --light-bg-sub: #FEFEFE;
+    --accent-color: #0079FF;
+    --accent-color-hover: #60ABFF;
+    --accent-color-active: #60ABFF;
+    --lm-icon-bg: brightness(100%);
+    --no-result-color: #f74646;
 }
 
 body {
     margin: 0;
     padding: 0;
-    background: #141D2F;
+    background: var(--dark-bg);
     color: #FFF;
     font-family: 'Space Mono', monospace;
     width: 100%;
     height: 100%;
-    transition: background-color 0.3s, color 0.3s;
-    
+    transition: background-color 0.3s, color 0.3s;  
 }
+
+.container {
+    margin: 1.94rem 1.5rem;
+    width: auto;
+    height: auto;
+  }
 
 /* Dark mode styles */
 body.dark-mode {
@@ -25,25 +42,15 @@ body.dark-mode {
     color: #FFF;
     
 }
-.search .dark-mode {
-    background-color: var(--dark-bg-sub);
-    color: #FFF;
-    
-}
 
-.dark-mode .octocat-profile  {
-    background-color: var(--dark-bg-sub);
-    color: #FFF;
-}
-.dark-mode .stats {
-    background-color: var(--dark-bg);
-    color: #FFF;
-}
-
-/* Light mode styles */
 body.light-mode {
     background: var(--light-bg);
     color: #000;
+}
+
+.search .dark-mode {
+    background-color: var(--dark-bg-sub);
+    color: #FFF;   
 }
 
 .light-mode .search{
@@ -52,15 +59,34 @@ body.light-mode {
     
 }
 
+.dark-mode .octocat-profile  {
+    background-color: var(--dark-bg-sub);
+    color: #FFF;
+}
+
 .light-mode .octocat-profile {
     background-color: var(--light-bg-sub);
     color: #000;
 }
 
-.light-mode .stats {
-    background-color: var(--light-bg);
+body.dark-mode .stats {
+    background-color: var(--dark-bg);
+    color: #FFF;
+}
+
+body.light-mode .stats {
+    background-color: var(--light-bg) ;
     color: #000;
 }
+
+
+.dark-mode .search input {
+    color: #FFF; /* Light gray color for placeholders in dark mode */
+  }
+
+.light-mode .search input {
+    color: #000; /* Light gray color for placeholders in dark mode */
+  }
 
 
 /* Dark mode styles for the toggle text */
@@ -72,15 +98,6 @@ body.dark-mode #toggleText {
 body.light-mode #toggleText {
     color: #222;
 }
-
-.container {
-    margin: 1.94rem 1.5rem;
-    width: 23.4375rem;
-    height: 48.5625rem;
-    align-items: center;
-    justify-content: center;
-}
-
 
 
 .top-nav {
@@ -107,16 +124,9 @@ body.light-mode #toggleText {
     letter-spacing: 0.15625rem;
 }
 .top-nav a:hover {
-    color: #90A4D4;
+    color: #4B6A9B;
 }
 
-#my-icon {
-    transition: fill 0.3s ease;
-}
-
-.top-nav img:hover {
-    fill: #90A4D4;
-}
 
 .top-nav-right {
     display: inline-flex;
@@ -130,14 +140,13 @@ body.light-mode #toggleText {
     margin-top: 2.19rem;
     align-items: center;
     text-align: center;
-    gap: 0.56;
+    gap: 0.56rem;
     width: 20.4375rem;
     height: 3.75rem;
     flex-shrink: 0;
     border-radius: 0.9375rem;
-    background: #1E2A47;
+    background: var(--dark-bg-sub);
     display: inline-flex;
-    margin-right:0.44rem ;
 }
 
 .search img {
@@ -149,16 +158,14 @@ body.light-mode #toggleText {
 
 
 .search input::placeholder{
-    font-size: 0.7rem;
+    height: 100%;
+    font-size: 0.68rem;
     font-family: 'Space Mono', monospace;
     font-style: normal;
-    font-weight: 400;
-    line-height: 1.5625rem;
-    color: #fff;
-    
+    font-weight: 400;  
 }
 .search input {
-    width: 8.5rem;
+    width: 50%;
     height: 1.5625rem;
     padding: 0rem;
     background-color: transparent;
@@ -171,18 +178,16 @@ body.light-mode #toggleText {
     line-height: 1.5625rem;
     
 }
-#no-result{
-    font-size: 0.5rem;
-    color: red;
-    padding: .2rem;
-}
+.red-placeholder::placeholder {
+    color: var(--no-result-color); /* Red color for the placeholder */
+  }
 
 button {
     width: 5.25rem;
     height: 2.875rem;
     flex-shrink: 0;
     border-radius: 0.625rem;
-    background: #0079FF;
+    background: var(--accent-color);
     color: #FFF;
     font-family: Space Mono;
     font-size: 0.875rem;
@@ -193,11 +198,11 @@ button {
 }
 
 button:hover {
-    background: #60ABFF;
+    background: var(--accent-color-hover);
 }
 
 button:active {
-    background: #60ABFF;
+    background: var(--accent-color-active);
 }
 
 
@@ -205,7 +210,7 @@ button:active {
     width: 20.4375rem;
     height: auto;
     border-radius: 0.9375rem;
-    background: #1E2A47;
+    background: var(--dark-bg-sub);
     margin-top: 1rem;
     margin-bottom: 4.94rem;
    
@@ -254,7 +259,7 @@ button:active {
     margin-top: 0.36rem;
 }
 .username{
-    color: #0079FF;
+    color: var(--accent-color);
     font-size: 0.8125rem;
     font-style: normal;
     font-weight: 400;
@@ -286,7 +291,7 @@ button:active {
     height: 5.3125rem;
     flex-shrink: 0;
     border-radius: 0.625rem;
-    background: #141D2F;
+    background: var(--dark-bg);
     margin: 1.44rem 1.5rem 1.5rem 1.5rem;
     display: inline-flex;
     flex-direction: row;
@@ -318,14 +323,6 @@ button:active {
     margin: 0.52rem auto;
 }
 
-
-.bottom {
-    margin: 1rem 1.5rem 1.5rem 1.5rem;
-
-}
-
-
-
 a { color: inherit; } 
 
 .img-info img {
@@ -340,6 +337,7 @@ a { color: inherit; }
     gap: 1rem 0;
     margin-left: 1.5rem;
     font-size: 0.8125rem;
+    z-index: 1;
 }
 
 .other-info {
@@ -363,6 +361,21 @@ a { color: inherit; }
     text-decoration: underline;
 }
 
+.icon {
+    /* Set the initial color of the icon */
+    filter: var(--lm-icon-bg);
+    transition: filter 0.3s ease;
+}
+
+ /* Change the color on hover */
+ .icon:hover {
+    filter: brightness(30%) sepia(100%) hue-rotate(120deg);
+  }
+
+.not-available-text {
+    color: #4B6A9B;
+}
+
 
 /*Tablet style */
 @media screen and (min-width: 48rem) {
@@ -384,7 +397,7 @@ a { color: inherit; }
         width: 35.8125rem;
         height: 4.3125rem;
         border-radius: 0.9375rem;
-        background: #1E2A47;
+        background: var(--dark-bg-sub);
     }
 
     .search img {
@@ -406,10 +419,6 @@ a { color: inherit; }
         
     }
 
-    #no-result {
-        font-size: 01rem;
-        padding: 1rem;
-    }
     
 
     button {
@@ -584,28 +593,9 @@ a { color: inherit; }
     
     }
     .search input {
-        width: 18.875rem;
-        
-        
+        width: 18.875rem;      
     }
 
-   #no-result {
-        color: #F74646;
-        font-family: Space Mono;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-        width: 10rem;
-        height: 1.375rem;
-        /* margin: 2.5rem; */
-        margin-right: -10rem;
-        
-      
-    }
-
-
-   
 
 
 }
